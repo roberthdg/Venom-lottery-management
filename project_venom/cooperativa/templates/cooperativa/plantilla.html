@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+          <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+          <script>
+        $.datepicker.regional['es'] = {clearText: 'Effacer', clearStatus: '',
+        closeText: 'Fermer', closeStatus: 'Fermer sans modifier',
+        prevText: '<Préc', prevStatus: 'Voir le mois précédent',
+        nextText: 'Suiv>', nextStatus: 'Voir le mois suivant',
+        currentText: 'Courant', currentStatus: 'Voir le mois courant',
+        monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+        'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+        monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+        'Jul','Ago','Sep','Oct','Nov','Dic'],
+        monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre année',
+        weekHeader: 'Sm', weekStatus: '',
+        dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+        dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
+        dayNamesMin: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
+        dayStatus: 'Utiliser DD comme premier jour de la semaine', dateStatus: 'Choisir le DD, MM d',
+        dateFormat: 'yy-mm-dd', firstDay: 0,
+        initStatus: 'Choisir la date', isRTL: false};
+        $.datepicker.setDefaults($.datepicker.regional['es']);
+        $.datepicker.formatDate( "yy-mm-dd")
+        $( function() {
+            $( "#datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+        });  $( "#datepicker2" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+        });
+         } );
+        </script>
+
+
+        <style type="text/css">
+          table { page-break-after:auto }
+          tr    { page-break-inside:avoid; page-break-after:auto }
+          td    { page-break-inside:avoid; page-break-after:auto }
+          thead { display:table-header-group }
+          tfoot { display:table-footer-group }
+        </style>
+
+
+
+   {% block head %}
+   {% endblock %}
+
+    </head>
+
+<body>
+<div class="container">
+<br>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project Venom</a>
+    </div>
+{% with request.resolver_match.url_name as url_name %}
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="{% if url_name == 'inicio' %}active{% endif %}"><a href="http://localhost:8000/cooperativa/inicio">Inicio<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clientes<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://localhost:8000/cooperativa/cliente/ingresar">Ingresar</a></li>
+            <li><a href="http://localhost:8000/cooperativa/cliente/buscar">Buscar</a></li>
+            <li><a href="http://localhost:8000/cooperativa/cliente/listado">Listado</a></li>
+          </ul>
+        </li>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Créditos<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://localhost:8000/cooperativa/credito/ingresar">Ingresar</a></li>
+            <li><a href="http://localhost:8000/cooperativa/credito/buscar">Buscar</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Estadísticas</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pagos<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://localhost:8000/cooperativa/pago/ingresar">Ingresar</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="http://localhost:8000/cooperativa/credito/alerta_mora">Alerta de mora</a></li>
+          </ul>
+        </li>
+      </ul>
+         <ul class="nav navbar-nav navbar-right">
+             <li><a href="../usuario/cerrar_sesion">{{user}}</a></li>
+             <li><a href="../usuario/cerrar_sesion">|</a></li>
+             <li><a href="../usuario/cerrar_sesion">Cerrar sesión</a></li>
+         </ul>
+    </div>
+    {% endwith %}
+  </div>
+</nav>
+
+
+
+</div>
+
+   {% block body %}
+   {% endblock %}
+
+
+<div class="container" style="padding-top:50px">
+        <footer class="footer">
+            <div class="col-xs-12 col-md-6">&copy; 2017 Global Solution | CobraYa </div>
+        </footer>
+</div>
+
+
+
+
+
+</body>
+
+
+
+</html>

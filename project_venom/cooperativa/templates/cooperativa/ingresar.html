@@ -1,0 +1,10 @@
+
+{% load crispy_forms_tags %}
+<div class="container">
+    <h1>Ingresar cooperativa</h1>
+
+    <form method="POST" action="">{% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" value="Ingresar datos">
+    </form>
+</div>

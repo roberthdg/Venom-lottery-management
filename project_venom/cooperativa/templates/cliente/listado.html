@@ -1,0 +1,23 @@
+   {% extends 'cooperativa/plantilla.html' %}
+
+
+    {% block body %}
+
+   <div class="container">
+       <h3>Listado de clientes</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for cliente in cliente_listado %}
+                     <tr><td>{{ cliente.nombre}}</td><td>{{ cliente.correo}}</td></tr>
+                     {% endfor %}
+                </tbody>
+            </table>
+   </div>
+
+    {% endblock body %}

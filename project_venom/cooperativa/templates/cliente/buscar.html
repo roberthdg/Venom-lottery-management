@@ -1,0 +1,27 @@
+   {% extends 'cooperativa/plantilla.html' %}
+
+
+    {% block head %}
+         <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                $("#datos_buscar").load("datos/"+$('#search_box').val());
+                $("#datos_buscar").show();
+                });
+            });
+         </script>
+    {% endblock head %}
+
+    {% block body %}
+
+
+{% load crispy_forms_tags %}
+    <div class="container">
+
+        <h3>Buscar cliente</h3>
+        <input  id="search_box" type="text" name="search_box"  placeholder=" Número de cédula" >
+        <button class="btn btn-primary btn-xs"><strong>Buscar</strong></button>
+        <div id="datos_buscar" hidden="hidden">{% include "cliente/datos_buscar.html" %}</div>
+    </div>
+
+   {% endblock body %}

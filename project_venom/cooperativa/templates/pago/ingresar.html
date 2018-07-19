@@ -1,0 +1,18 @@
+
+   {% extends 'cooperativa/plantilla.html' %}
+
+
+    {% block head %}
+    {% endblock head %}
+
+    {% block body %}
+
+    <div class="container">
+        <h3>Datos del cliente</h3>
+        <form action="../pago/ingresar/datos" method="get">{% csrf_token %}
+            <input  id="search_box" type="text" name="cedula"  placeholder=" Número de cédula" >
+            <input type="submit" value="Ingresar" class="btn btn-primary btn-sm">
+            </form>
+    </div>
+
+   {% endblock body %}

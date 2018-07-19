@@ -1,0 +1,17 @@
+   {% extends 'cooperativa/plantilla.html' %}
+
+    {% block body %}
+
+
+{% load crispy_forms_tags %}
+    <div class="container">
+
+        <h3>Buscar crédito</h3>
+        <form action="../credito/datos" method="get">{% csrf_token %}
+            <input  id="search_box" type="text" name="codigo"  placeholder=" Código del crédito">
+            <input hidden="hidden" value="0" name="n">
+            <input type="submit" value="Ingresar" class="btn btn-primary btn-sm">
+            </form>
+    </div>
+
+   {% endblock body %}

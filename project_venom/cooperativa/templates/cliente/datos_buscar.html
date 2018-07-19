@@ -1,0 +1,48 @@
+
+
+{% block body %}
+<br>
+{% if match is False%}
+   <div class="alert alert-danger" role="alert"> <strong>No existe cliente con estos datos</strong> </div>
+
+{% else %}
+<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Teléfono celular</th>
+                        <th>Deuda</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                         <td>{{ cliente.cedula}}</td><td>{{ cliente.nombre}}</td>
+                         <td>{{ cliente.telefono_fijo}}</td>
+                         <td>{{ cliente.telefono_celular}}</td>
+                         <td>${{ cliente.deuda}}</td>
+                     </tr>
+                </tbody>
+            </table>
+<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Dirección</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Estado Jurídico</th>
+                        <th>Correo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                         <td>{{ cliente.direccion}}</td>
+                         <td>{{ cliente.fecha_nacimiento}}</td>
+                         <td>{{ cliente.estado_juridico}}</td>
+                         <td>{{ cliente.correo}}</td>
+                     </tr>
+                </tbody>
+            </table>
+{% endif %}
+
+{% endblock body %}

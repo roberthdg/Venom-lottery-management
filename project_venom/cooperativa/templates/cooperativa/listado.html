@@ -1,0 +1,5 @@
+<ul>
+    {% for cooperativa in cooperativas_listado %}
+    <li><a href="/cooperativa/listado/{{ cooperativa.ruc}}">{{ cooperativa.nombre}}</a></li>
+    {% endfor %}
+</ul>

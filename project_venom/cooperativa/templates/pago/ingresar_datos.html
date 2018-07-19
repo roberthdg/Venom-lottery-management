@@ -1,0 +1,20 @@
+
+
+    {% extends 'cooperativa/plantilla.html' %}
+
+    {% block body %}
+
+    {% load crispy_forms_tags %}
+    <div class="container">
+        <h3>Registrar pago</h3><br>
+        <form method="POST" action="">{% csrf_token %}
+            {{form|crispy}}
+        <input id="ingresar_pago" type="submit"  class="btn btn-primary" value="Ingresar datos">
+        </form>
+    </div>
+
+        {% endblock body %}
+
+
+
+

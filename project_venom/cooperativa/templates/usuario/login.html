@@ -1,0 +1,30 @@
+<html>
+{%extends 'cooperativa/plantilla.html' %}
+<head>
+    {% block head %}
+    <title>Inciar sesión</title>
+    {% endblock %}</head>
+
+{%load static%}
+
+<link rel="stylesheet" href="{% static 'usuario.style.css' %}" type="text/css">
+
+<body>
+
+
+    {% block body %}
+    <div class="container">
+   <h1>Bienvenido</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+    <button type="submit">Iniciar sesión</button>
+    </form>
+    </div>
+    {% endblock %}
+
+</body>
+
+
+
+</html>

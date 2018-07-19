@@ -1,0 +1,93 @@
+
+{% extends 'cooperativa/plantilla.html' %}
+
+{% block body %}
+<div class ="container">
+{% if credito is None or match is False%}
+   <div class="alert alert-danger" role="alert"> <strong>No existe crédito con estos datos</strong> </div>
+   <input type=button value="Volver"  class="btn btn-primary" onClick="javascript:history.go(-1);">
+{% else %}
+
+    {% if n == '1' %}
+        <div class="alert alert-success" role="alert"> <strong>Crédito ingresado con éxito</strong> </div>
+    {% endif %}
+
+       <div class="container">
+       <h3>Datos del crédito</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Valor cuota</th>
+                        <th>Fecha concesión</th>
+                        <th>Fecha vencimiento</th>
+                        <th>Encaje</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                         <td>{{credito.codigo_credito}}</td><td>{{ credito.valor_cuota}}</td>
+                          <td>{{credito.fecha_concesion}}</td><td>{{ credito.fecha_vencimiento}}</td>
+                          <td>{{credito.encaje}}</td><td>{{ credito.tipo}}</td>
+
+                     </tr>
+                </tbody>
+            </table>
+        <br>
+    {% if n == '2' %}
+        <div class="alert alert-success" role="alert"> <strong>Pago ingresado con éxito</strong> </div>
+    {% endif %}
+
+           <h3>Datos de pagos</h3>
+               <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Monto</th>
+                    <th>Tasa</th>
+                    <th>Tasa de mora</th>
+                    <th>Forma de pago</th>
+                    <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for pago in pago_listado %}
+                     <tr><td>${{ pago.monto}}</td><td>{{ pago.tasa}}</td><td>{{ pago.tasa_mora}}</td><td>{{ pago.forma_pago}}</td><td>{{ pago.fecha_pago}}</td></tr>
+                     {% endfor %}
+                </tbody>
+            </table>
+            <button class="btn btn-primary">Ingresar pago</button>
+            <br><br>
+
+    {% if n == '3' %}
+           <br>
+
+        <div class="alert alert-success" role="alert"> <strong>Garante ingresado con éxito</strong> </div>
+    {% endif %}
+
+        <h3>Datos de garantes</h3>
+               <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Teléfono celular</th>
+                    <th>Correo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for garante in garante_listado %}
+                     <tr>
+                         <td>{{ garante.cedula}}</td><td>{{ garante.nombre}}</td><td>{{ garante.telefono_fijo}}</td>
+                         <td>{{ garante.telefono_celular}}</td><td>{{ garante.correo}}</td>
+                     </tr>
+                     {% endfor %}
+                </tbody>
+            </table>
+            <button class="btn btn-primary">Ingresar garante</button>
+        </div>
+
+{% endif %}
+</div>
+{% endblock body %}

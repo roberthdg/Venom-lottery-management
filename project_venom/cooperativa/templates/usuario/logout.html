@@ -1,0 +1,30 @@
+<html>
+{%extends 'plantilla.html' %}
+<head>
+    {% block head %}
+    <title>Cerrar sesión</title>
+    {% endblock %}</head>
+
+{%load static%}
+
+<link rel="stylesheet" href="{% static 'usuario.style.css' %}" type="text/css">
+
+<body>
+
+
+    {% block body %}
+    <div class="container">
+   <h1>Bienvenido</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+    <button data-href-template="../iniciar_sesion/">Sesión cerrada exitosamente</button>
+    </form>
+    </div>
+    {% endblock %}
+
+</body>
+
+
+
+</html>
